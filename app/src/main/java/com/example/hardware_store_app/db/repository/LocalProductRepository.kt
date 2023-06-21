@@ -10,6 +10,9 @@ class LocalProductRepository @Inject constructor(var goodsDao: GoodsDao) {
     }
 
     suspend fun getPopularProducts(): List<Goods> = goodsDao.getPopularProducts()
-
+    suspend fun getAllProducts(): List<Goods> = goodsDao.getAllProducts()
+    suspend fun getProductById(id: String): Goods = goodsDao.getProductById(id)
+    suspend fun getProductByName(name: String): List<Goods> = goodsDao.getProductsByName(name)
+    suspend fun getProductsByCategory(category: String): List<Goods> = goodsDao.getProductsByCategory(category)
     suspend fun insertProductIntoDB(goods: Goods) = goodsDao.insertProductIntoDB(goods)
 }
