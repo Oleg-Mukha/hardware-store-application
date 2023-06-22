@@ -6,6 +6,6 @@ interface ActionHandler {
     fun onCategoryClick(category: String)
 }
 
-interface OnItemClick{
+interface OnItemClick {
     fun onItemClick(id: String)
 }
