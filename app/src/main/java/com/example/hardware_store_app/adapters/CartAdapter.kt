@@ -20,6 +20,7 @@ class CartAdapter(
         val productName: TextView = view.findViewById(R.id.tv_cart_name)
         val productCategory: TextView = view.findViewById(R.id.tv_cart_category)
         val productPrice: TextView = view.findViewById(R.id.tv_total_price)
+        val ellipsis: ImageView = view.findViewById(R.id.iv_ellipsis)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +38,7 @@ class CartAdapter(
         holder.productCategory.text = cartItem.category
         holder.productPrice.text = cartItem.price.toString()
 
-        holder.itemView.setOnClickListener {
+        holder.ellipsis.setOnClickListener {
             onItemClick?.onItemClick(cartItem.productId.toString())
             cartList.remove(cartItem)
             notifyItemRemoved(position)
