@@ -46,7 +46,7 @@ class CartFragment : Fragment() {
                 var orderPrice = 0.0
 
                 it.forEach { cart -> orderPrice += cart.price ?: 0.0 }
-                tvCartPrice.text = "$${"%.2f".format(orderPrice)}"
+                tvCartPrice.text = "₴${"%.2f".format(orderPrice)}"
 
                 cartAdapter.updateList(it)
                 rvCartItems.adapter = cartAdapter
