@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hardware_store_app.OnItemClick
 import com.example.hardware_store_app.adapters.ProductAdapter
 import com.example.hardware_store_app.databinding.FragmentListBinding
-import com.example.hardware_store_app.db.data.Goods
+import com.example.hardware_store_app.screens.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,12 +37,12 @@ class ListFragment : Fragment() {
             viewModel.getProductsByCategory(args.category)
         }
 
-        initViews()
+        initObservers()
 
         return binding.root
     }
 
-    private fun initViews() {
+    private fun initObservers() {
         productAdapter = ProductAdapter(listOf(), object : OnItemClick {
             override fun onItemClick(id: String) {
                 findNavController().navigate(
@@ -55,6 +55,12 @@ class ListFragment : Fragment() {
                 productAdapter.updateList(it)
                 rvProductList.layoutManager = GridLayoutManager(requireContext(), 2)
                 rvProductList.adapter = productAdapter
+            }
+
+            ivBtnSearch.setOnClickListener {
+                findNavController().navigate(
+                    ListFragmentDirections.actionListFragmentToSearchFragment()
+                )
             }
         }
     }
