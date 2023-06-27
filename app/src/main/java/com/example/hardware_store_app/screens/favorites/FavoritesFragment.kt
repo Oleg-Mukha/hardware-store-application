@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.hardware_store_app.OnItemClick
 import com.example.hardware_store_app.R
 import com.example.hardware_store_app.adapters.ProductAdapter
@@ -46,11 +47,17 @@ class FavoritesFragment : Fragment() {
             })
 
             viewModel.listOfLikedItems.observe(viewLifecycleOwner) {
-                productAdapter.updateList(it)
-                rvLikes.layoutManager = GridLayoutManager(requireContext(), 2)
-                rvLikes.adapter = productAdapter
+                if (it.isEmpty()) {
+                    Glide.with(requireActivity()).load(R.drawable.fav_gif).into(ivFavGif)
+                    ivFavGif.visibility = View.VISIBLE
+                    tvFavGuide.visibility = View.VISIBLE
+                    rvLikes.visibility = View.INVISIBLE
+                } else {
+                    productAdapter.updateList(it)
+                    rvLikes.layoutManager = GridLayoutManager(requireContext(), 2)
+                    rvLikes.adapter = productAdapter
+                }
             }
-
         }
     }
 
