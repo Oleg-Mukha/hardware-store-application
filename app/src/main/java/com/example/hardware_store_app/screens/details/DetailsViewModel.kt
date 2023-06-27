@@ -18,6 +18,7 @@ class DetailsViewModel @Inject constructor(
 
     val productItem = MutableLiveData<Goods>()
     val isLikedItem = MutableLiveData<Boolean>()
+    val popularList = MutableLiveData<List<Goods>>()
 
     fun getProductById(id: String) {
         viewModelScope.launch {
@@ -53,6 +54,13 @@ class DetailsViewModel @Inject constructor(
         )
         viewModelScope.launch {
             productLocalRepository.addProductToCart(cart)
+        }
+    }
+
+    fun getPopularList() {
+        viewModelScope.launch {
+            val list = productLocalRepository.getPopularProducts()
+            popularList.value = list.shuffled().slice(0..1)
         }
     }
 }
