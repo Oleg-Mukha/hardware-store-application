@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1073923945757",
+    "project_id": "primebuild-enterprises",
+    "storage_bucket": "primebuild-enterprises.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073923945757:android:2fe25557e46b9c778d1df4",
+        "android_client_info": {
+          "package_name": "com.example.hardware_store_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073923945757-6d0hui5qqedqakegqldut3pq0knm58uq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hardware_store_app",
+            "certificate_hash": "7e71417c32fec572564b1ffeb7681ae51473b2c0"
+          }
+        },
+        {
+          "client_id": "1073923945757-j5ush9ik20kvb4pnbtbd9cvu5a30g7qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZWc9fUS7q16i_oAQOtLKxH-XjZlXXM-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073923945757-j5ush9ik20kvb4pnbtbd9cvu5a30g7qq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
