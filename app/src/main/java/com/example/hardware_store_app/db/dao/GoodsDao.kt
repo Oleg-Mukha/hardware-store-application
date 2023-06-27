@@ -8,7 +8,7 @@ import com.example.hardware_store_app.db.data.Goods
 
 @Dao
 interface GoodsDao {
-    @Query("SELECT * FROM goods WHERE rate = 5")
+    @Query("SELECT * FROM goods WHERE rate >= 4.8")
     suspend fun getPopularProducts(): List<Goods>
 
     @Query("SELECT * FROM goods")
