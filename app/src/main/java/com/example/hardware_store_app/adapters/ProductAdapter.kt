@@ -3,6 +3,7 @@ package com.example.hardware_store_app.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +43,14 @@ class ProductAdapter(
         holder.itemView.setOnClickListener {
             onItemClick?.onItemClick(product.id.toString())
         }
+
+        setAnimation(holder.itemView)
+    }
+
+    private fun setAnimation(view: View) {
+        val animation =
+            AnimationUtils.loadAnimation(view.context, R.anim.rv_list_fade)
+        view.startAnimation(animation)
     }
 
     override fun getItemCount(): Int = productList.size
