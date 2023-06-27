@@ -8,9 +8,8 @@ import com.example.hardware_store_app.db.dao.LikeDao
 import com.example.hardware_store_app.db.data.Cart
 import com.example.hardware_store_app.db.data.Goods
 import com.example.hardware_store_app.db.data.Like
-import com.example.hardware_store_app.db.data.User
 
-@Database(entities = [Goods::class, Like::class, Cart::class, User::class], version = 1)
+@Database(entities = [Goods::class, Like::class, Cart::class], version = 3)
 abstract class ProductDatabase : RoomDatabase() {
     abstract fun goodsDao(): GoodsDao
     abstract fun likeDao(): LikeDao
