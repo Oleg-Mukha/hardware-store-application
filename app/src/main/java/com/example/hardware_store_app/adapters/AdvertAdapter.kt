@@ -3,6 +3,7 @@ package com.example.hardware_store_app.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,12 +27,23 @@ class AdvertAdapter(private var advertList: List<Advert>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val advert = advertList[position]
+        val advert = advertList[position % advertList.size]
         holder.adCaption.text = advert.advertName
         holder.adDescription.text = advert.advertDescription
         holder.adImage.setImageResource(advert.advertImage ?: 0)
         holder.adButton.text = "More"
+
+        setAnimation(holder.itemView)
     }
 
-    override fun getItemCount(): Int = advertList.size
+    override fun getItemCount(): Int {
+        return Int.MAX_VALUE
+    }
+
+    private fun setAnimation(view: View) {
+        val animation =
+            AnimationUtils.loadAnimation(view.context, R.anim.rv_list_fade)
+        view.startAnimation(animation)
+    }
+
 }
