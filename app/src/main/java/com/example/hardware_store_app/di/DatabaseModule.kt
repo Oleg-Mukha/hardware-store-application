@@ -1,9 +1,13 @@
 package com.example.hardware_store_app.di
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import androidx.room.Room
 import com.example.hardware_store_app.db.ProductDatabase
+import com.example.hardware_store_app.db.dao.CartDao
 import com.example.hardware_store_app.db.dao.GoodsDao
+import com.example.hardware_store_app.db.dao.LikeDao
 import com.example.hardware_store_app.db.repository.LocalProductRepository
 import dagger.Module
 import dagger.Provides
@@ -25,7 +29,22 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideFoodDao(foodDatabase: ProductDatabase): GoodsDao {
-        return foodDatabase.goodsDao()
+    fun provideGoodsDao(productDatabase: ProductDatabase): GoodsDao {
+        return productDatabase.goodsDao()
+    }
+
+    @Provides
+    fun provideLikeDao(productDatabase: ProductDatabase): LikeDao {
+        return productDatabase.likeDao()
+    }
+
+    @Provides
+    fun provideCartDao(productDatabase: ProductDatabase): CartDao {
+        return productDatabase.cartDao()
+    }
+
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context)
     }
 }
