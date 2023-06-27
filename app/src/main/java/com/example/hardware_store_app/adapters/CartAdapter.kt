@@ -3,6 +3,7 @@ package com.example.hardware_store_app.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -36,13 +37,21 @@ class CartAdapter(
         holder.productImage.setImageResource(cartItem.image ?: 0)
         holder.productName.text = cartItem.name
         holder.productCategory.text = cartItem.category
-        holder.productPrice.text = cartItem.price.toString()
+        holder.productPrice.text = "₴${"%.2f".format(cartItem.price)}"
 
         holder.ellipsis.setOnClickListener {
             onItemClick?.onItemClick(cartItem.productId.toString())
             cartList.remove(cartItem)
             notifyItemRemoved(position)
         }
+
+        setAnimation(holder.itemView)
+    }
+
+    private fun setAnimation(view: View) {
+        val animation =
+            AnimationUtils.loadAnimation(view.context, R.anim.rv_list_fade)
+        view.startAnimation(animation)
     }
 
     fun updateList(list: MutableList<Cart>) {
