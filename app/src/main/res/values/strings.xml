@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">hardware-store-app</string>
+    <string name="app_name">PrimeBuild Enterprises</string>
+    <string name="view_all_products"><u>View all products</u></string>
 </resources>
