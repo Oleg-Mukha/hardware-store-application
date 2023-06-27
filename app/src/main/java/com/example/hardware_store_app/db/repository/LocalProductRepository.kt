@@ -38,4 +38,5 @@ class LocalProductRepository @Inject constructor(
     suspend fun addProductToCart(cart: Cart) = cartDao.addProductToCart(cart)
     suspend fun getProductsFromCart(): MutableList<Cart> = cartDao.getProductsFromCart()
     suspend fun deleteProductFromCart(id: Int) = cartDao.deleteProductFromCart(id)
+    suspend fun deleteAllProductsFromCart() = cartDao.deleteAllProductsFromCart()
 }
