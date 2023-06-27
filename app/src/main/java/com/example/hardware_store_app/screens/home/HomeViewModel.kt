@@ -8,31 +8,30 @@ import com.example.hardware_store_app.data.Advert
 import com.example.hardware_store_app.data.Product
 import com.example.hardware_store_app.db.data.Goods
 import com.example.hardware_store_app.db.repository.LocalProductRepository
-import com.example.hardware_store_app.repositories.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
-    private val productLocalRepository: LocalProductRepository,
+    private val productLocalRepository: LocalProductRepository
 ) : ViewModel() {
 
     val listOfAds = listOf(
         Advert(
-            advertName = "Build, repair & paint",
+            advertName = "BUILD, REPAIR & PAINT",
             advertDescription = "Save up to 40% on building materials only in June!",
-            advertImage = R.drawable.building
+            advertImage = R.drawable.brick_wall
         ),
         Advert(
-            advertName = "Free shipping",
+            advertName = "FREE SHIPPING",
             advertDescription = "Choose free shipping to your location",
-            advertImage = R.drawable.truck
+            advertImage = R.drawable.shipping
         ),
         Advert(
-            advertName = "Save 5% with Google Pay",
-            advertDescription = "Additional 5% discount with Google Pay",
-            advertImage = R.drawable.googlepay
+            advertName = "SAVE WITH MASTERCARD!",
+            advertDescription = "Additional 5% discount with MasterCard",
+            advertImage = R.drawable.mastercard
         ),
     )
 
@@ -45,23 +44,6 @@ class HomeViewModel @Inject constructor(
         Product(name = "Mixtures", image = R.drawable.cement),
     )
 
-    fun insertGoodsIntoDB() {
-        viewModelScope.launch {
-            productRepository.getList().forEach {
-                productLocalRepository.insertProductIntoDB(
-                    Goods(
-                        it.id,
-                        it.name,
-                        it.image,
-                        it.price,
-                        it.category,
-                        it.description,
-                        it.rate
-                    )
-                )
-            }
-        }
-    }
     val popularList = MutableLiveData<List<Goods>>()
     fun getPopularList() {
         viewModelScope.launch {
