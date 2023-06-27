@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hardware_store_app.ActionHandler
 import com.example.hardware_store_app.R
 import com.example.hardware_store_app.data.Product
-import com.example.hardware_store_app.databinding.CategoryCardBinding
 
 class CategoryAdapter(private var categoryList: List<Product>, val actionHandler: ActionHandler) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
